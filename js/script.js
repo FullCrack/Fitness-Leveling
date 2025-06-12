@@ -41,31 +41,38 @@
 
   // Drag functionality
   const chrono = document.getElementById('chrono-container');
-  let offsetX = 0, offsetY = 0;
+  let offsetX = 0, offsetY = 0, isDragging = false;
 
-  chrono.addEventListener('mousedown', (e) => {
-    e.preventDefault();
-    offsetX = e.clientX - chrono.offsetLeft;
-    offsetY = e.clientY - chrono.offsetTop;
+chronoContainer.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  offsetX = e.clientX - chronoContainer.offsetLeft;
+  offsetY = e.clientY - chronoContainer.offsetTop;
+});
 
-    function move(e) {
-    let newX = e.clientX - offsetX;
-    let newY = e.clientY - offsetY;
+    document.addEventListener("mousemove", (e) => {
+  if (!isDragging) return;
+  chronoContainer.style.left = `${e.clientX - offsetX}px`;
+  chronoContainer.style.top = `${e.clientY - offsetY}px`;
+});
 
-    newX = Math.max(0, Math.min(window.innerWidth - chrono.offsetWidth, newX));
-    newY = Math.max(0, Math.min(window.innerHeight - chrono.offsetHeight, newY));
+document.addEventListener("mouseup", () => {
+  isDragging = false;
+});
 
-    chrono.style.left = newX + 'px';
-    chrono.style.top = newY + 'px';
-  }
+chronoContainer.addEventListener("touchstart", (e) => {
+  isDragging = true;
+  offsetX = e.touches[0].clientX - chronoContainer.offsetLeft;
+  offsetY = e.touches[0].clientY - chronoContainer.offsetTop;
+});
 
-    function stop() {
-    document.removeEventListener('mousemove', move);
-    document.removeEventListener('mouseup', stop);
-  }
+document.addEventListener("touchmove", (e) => {
+  if (!isDragging) return;
+  chronoContainer.style.left = `${e.touches[0].clientX - offsetX}px`;
+  chronoContainer.style.top = `${e.touches[0].clientY - offsetY}px`;
+});
 
-  document.addEventListener('mousemove', move);
-  document.addEventListener('mouseup', stop);
+document.addEventListener("touchend", () => {
+  isDragging = false;
   });
 //--
 
