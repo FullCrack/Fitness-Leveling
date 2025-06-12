@@ -1,0 +1,221 @@
+body {
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
+  color: white;
+  text-align: center;
+  user-select: none;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, rgba(167, 108, 242, 0.7), rgba(255, 126, 231, 0.7));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+.grade {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  font-weight: bold;
+  text-shadow: none;
+  animation: pulse 2s infinite alternate;
+}
+
+
+.grade.NoGrade { color: #B0B0B0; }  /* Gris doux */
+.grade.E       { color: #FF914D; }  /* Orange clair */
+.grade.D       { color: #FFD93D; }  /* Jaune doux */
+.grade.C       { color: #6FCF97; }  /* Vert moderne */
+.grade.B       { color: #56CCF2; }  /* Bleu clair */
+.grade.A       { color: #BB6BD9; }  /* Violet doux */
+.grade.S       { color: #EB5757; }  /* Rouge stylé */
+
+@keyframes pulse {
+  0% { text-shadow: 0 0 5px #a76cf2, 0 0 10px #ff7ee7; }
+  100% { text-shadow: 0 0 20px #a76cf2, 0 0 40px #ff7ee7; }
+}
+
+.progress-bar {
+  width: 100%;
+  background: #444;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  height: 25px;
+  box-shadow: inset 0 0 5px #222;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #32cd32, #7fff00);
+  width: 0%;
+  transition: width 0.5s ease-in-out;
+  box-shadow: 0 0 10px #7fff00aa;
+}
+
+.xp-text {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+#quest-display {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.quest-difficulty {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.quest-box {
+  background: #222;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  user-select: text;
+}
+
+.quest-desc {
+  font-size: 1.4em;
+  color: #ccc;
+  margin-top: 0.5rem;
+  min-height: 60px;
+}
+
+button {
+  font-size: 1.2rem;
+  padding: 0.5rem 2rem;
+  background-color: #7b32f2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 0.5rem;
+  transition: transform 0.1s;
+  user-select: none;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+#chrono-container {
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      padding: 15px;
+      background-color: #222;
+      color: white;
+      font-family: Arial, sans-serif;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #000;
+      cursor: move;
+      width: fit-content;
+      text-align: center;
+    }
+    #chrono-display {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    #chrono-controls button {
+      margin: 0 5px;
+      padding: 8px 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #444;
+      color: white;
+      cursor: pointer;
+    }
+    #chrono-controls button:hover {
+      background-color: #666;
+    }
+
+#cookie-popup {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background: #222;
+  color: white;
+  padding: 1rem;
+  border: 1px solid white;
+  border-radius: 8px;
+  z-index: 10;
+  max-width: 300px;
+}
+
+#confirm-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+#confirm-box {
+  background: #222;
+  padding: 20px 30px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  animation: scaleIn 0.2s ease forwards;
+  box-shadow: 0 0 10px #000;
+}
+
+.confirm-buttons {
+  margin-top: 15px;
+}
+
+.confirm-buttons button {
+  margin: 0 10px;
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirm-buttons button:hover {
+  background-color: #666;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.hidden {
+  display: none !important;
+}
